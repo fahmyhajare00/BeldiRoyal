@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beldi Royal | Restaurant Marocain</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #D4AF37; /* Gold */
+            --secondary-color: #4A0E17; /* Deep Burgundy */
+            --dark-bg: #121212;
+            --text-light: #F5F5DC;
+            --text-dark: #333333;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, h4, h5, h6, .navbar-brand {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: rgba(18, 18, 18, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            transition: all 0.3s ease;
+        }
+        .logo {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid var(--primary-color);
+        }
+        .nav-link {
+            color: var(--text-light) !important;
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 1px;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover {
+            color: var(--primary-color) !important;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(18, 18, 18, 0.6), rgba(18, 18, 18, 0.9)), url('ImageB/photo zwa9 3.jpeg') center/cover no-repeat fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 80px;
+        }
+        .hero h1 {
+            font-size: 4.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 10px rgba(0,0,0,0.9);
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            font-weight: 400;
+            color: #ffffff;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.9);
+        }
+        .btn-gold {
+            background-color: var(--primary-color);
+            color: var(--dark-bg);
+            border: 2px solid var(--primary-color);
+            padding: 12px 35px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+        .btn-gold:hover {
+            background-color: transparent;
+            color: var(--primary-color);
+        }
+
+        /* Section Titles */
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-title h2 {
+            font-size: 2.8rem;
+            color: var(--primary-color);
+            display: inline-block;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-color);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 100px 0;
+            background-color: #1A1A1A;
+        }
+        .about-img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        /* Menu Section */
+        .menu-section {
+            padding: 100px 0;
+            background-color: var(--dark-bg);
+        }
+        .menu-card {
+            background: #1A1A1A;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            margin-bottom: 30px;
+            height: 100%;
+        }
+        .menu-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(212, 175, 55, 0.5);
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.15);
+        }
+        .menu-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        .menu-card-body {
+            padding: 25px;
+            text-align: center;
+        }
+        .menu-card-body p {
+            color: rgba(255, 255, 255, 0.85) !important;
+            line-height: 1.6;
+        }
+        .menu-card-title {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .menu-price {
+            color: #fff;
+            font-weight: 600;
+            font-size: 1.3rem;
+            margin-top: 15px;
+            display: inline-block;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 10px;
+            width: 50%;
+        }
+
+        /* Category Banner */
+        .category-banner {
+            height: 400px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            overflow: hidden;
+        }
+        .category-banner::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(18, 18, 18, 0.6) 0%,
+                rgba(74, 14, 23, 0.75) 50%,
+                rgba(18, 18, 18, 0.95) 100%
+            );
+            z-index: 1;
+        }
+        .category-banner-content {
+            position: relative;
+            z-index: 2;
+        }
+        .category-banner-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: var(--primary-color);
+            text-shadow: 3px 3px 12px rgba(0,0,0,0.9);
+            margin-bottom: 10px;
+            letter-spacing: 3px;
+            font-weight: 700;
+        }
+        .category-banner-content .category-subtitle {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            color: #ffffff;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
+        }
+        .category-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            display: block;
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .category-divider {
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+            margin: 15px auto 0;
+        }
+
+        /* Category Menu Grid */
+        .category-menu {
+            padding: 80px 0;
+            background-color: #1A1A1A;
+            position: relative;
+        }
+        .category-menu:nth-child(even) {
+            background-color: var(--dark-bg);
+        }
+        .category-menu::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1px;
+            height: 60px;
+            background: linear-gradient(to bottom, var(--primary-color), transparent);
+        }
+
+        /* Reservation Section */
+        .reservation-section {
+            padding: 100px 0;
+            background: linear-gradient(rgba(18, 18, 18, 0.9), rgba(18, 18, 18, 0.9)), url('ImageB/art fleur.jpeg') center/cover no-repeat fixed;
+        }
+        .reservation-form {
+            background: rgba(26, 26, 26, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 50px;
+            border-radius: 15px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+        .form-control, .form-select {
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+            border-radius: 0;
+            color: white;
+            padding: 10px 0;
+            font-size: 1rem;
+        }
+        .form-control:focus, .form-select:focus {
+            background-color: transparent;
+            color: white;
+            box-shadow: none;
+            border-color: var(--primary-color);
+        }
+        .form-control::placeholder {
+            color: rgba(255,255,255,0.5);
+        }
+        .form-select option {
+            background-color: #1A1A1A;
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0A0A0A;
+            padding: 70px 0 30px;
+            border-top: 2px solid var(--secondary-color);
+        }
+        .footer-logo {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            margin-bottom: 25px;
+        }
+        .footer-title {
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+        }
+        .social-links a {
+            color: rgba(255,255,255,0.7);
+            font-size: 1.5rem;
+            margin-right: 20px;
+            transition: color 0.3s ease;
+            display: inline-block;
+        }
+        .social-links a:hover {
+            color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        /* Deco Gallery from Original */
+        .deco-gallery {
+            padding: 80px 0 0 0;
+            background-color: var(--dark-bg);
+        }
+        .deco-img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+            border: 1px solid var(--primary-color);
+            transition: all 0.3s ease;
+        }
+        .deco-img:hover {
+            box-shadow: -2px -1px 25px -4px rgba(212, 175, 55, 0.4);
+            -webkit-box-shadow: -2px -1px 25px -4px rgba(212, 175, 55, 0.4);
+            -moz-box-shadow: -2px -1px 25px -4px rgba(212, 175, 55, 0.4);
+            transform: scale(1.02);
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3rem; }
+            .reservation-form { padding: 30px; }
+            .deco-img { height: 300px; margin-bottom: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top py-3">
+        <div class="container">
+            <a class="navbar-brand" href="#accueil">
+                <img class="logo" src="ImageB/logo1.jpeg" alt="Beldi Royal">
+            </a>
+            <button class="navbar-toggler shadow-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="bi bi-list text-white fs-1"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center text-center mt-4 mt-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="#accueil">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#a-propos">À Propos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#menu">Notre Menu</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#reservation">Réservation</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+                        <a href="#reservation" class="btn btn-gold btn-sm rounded-pill px-4 py-2">Réserver</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="accueil" class="hero">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <h1>Beldi Royal Marocain</h1>
+                    <p>Un voyage gustatif authentique au cœur du Maroc royal.<br>Découvrez l'élégance et la richesse de notre gastronomie de tradition.</p>
+                    <a href="#menu" class="btn btn-gold rounded-pill mt-2">Découvrir le Menu</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galerie Décorative (Style Original) -->
+    <section class="deco-gallery">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-sm-4 text-center">
+                    <img class="deco-img" src="ImageB/Art triya.jpeg" alt="Art triya">
+                </div>
+                <div class="col-sm-4 text-center">
+                    <img class="deco-img" src="ImageB/Tagine zwa9.jpeg" alt="Tagine zwa9">
+                </div>
+                <div class="col-sm-4 text-center">
+                    <img class="deco-img" src="ImageB/Art triya.jpeg" alt="Art triya">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="a-propos" class="about-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <img src="ImageB/photo zwa9 3.jpeg" alt="Décoration Marocaine" class="about-img">
+                </div>
+                <div class="col-lg-6 ps-lg-5">
+                    <div class="section-title text-start mb-4">
+                        <h2>Notre Histoire</h2>
+                    </div>
+                    <p class="mb-4" style="line-height: 1.8; color: rgba(255, 255, 255, 0.9); font-size: 1.05rem;">Bienvenue chez <strong>Beldi Royal Marocain</strong>. Niché dans un cadre somptueux, notre restaurant vous invite à une immersion totale dans la culture et la haute gastronomie marocaine.</p>
+                    <p class="mb-4" style="line-height: 1.8; color: rgba(255, 255, 255, 0.9); font-size: 1.05rem;">Chaque plat est préparé avec passion, en utilisant des épices sélectionnées avec le plus grand soin et des recettes ancestrales transmises de génération en génération. Laissez-vous séduire par l'hospitalité légendaire et les saveurs envoûtantes de notre terre.</p>
+                    
+                    <div class="d-flex align-items-center mt-4">
+                        <i class="bi bi-star-fill text-warning me-3 fs-5"></i>
+                        <span style="color: rgba(255, 255, 255, 0.95); font-weight: 500;">Ingrédients frais, locaux et de saison</span>
+                    </div>
+                    <div class="d-flex align-items-center mt-3">
+                        <i class="bi bi-star-fill text-warning me-3 fs-5"></i>
+                        <span style="color: rgba(255, 255, 255, 0.95); font-weight: 500;">Cadre traditionnel avec une touche de modernité</span>
+                    </div>
+                    <div class="d-flex align-items-center mt-3">
+                        <i class="bi bi-star-fill text-warning me-3 fs-5"></i>
+                        <span style="color: rgba(255, 255, 255, 0.95); font-weight: 500;">Une expérience culinaire digne d'un palais royal</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== MENU ==================== -->
+    <section id="menu" class="menu-section" style="padding-bottom: 0;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nos Spécialités Royales</h2>
+            </div>
+            
+            <div class="row g-4 mb-0">
+                <!-- Card 1 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="menu-card h-100">
+                        <img src="ImageB/pastila fr gr.jpeg" alt="Pastilla aux Fruits de Mer">
+                        <div class="menu-card-body d-flex flex-column h-100">
+                            <h3 class="menu-card-title">Pastilla de l'Océan</h3>
+                            <p class="text-muted small flex-grow-1">Feuilles de brick croustillantes généreusement farcies aux fruits de mer et vermicelles.</p>
+                            <div class="menu-price mx-auto">180 MAD</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="menu-card h-100">
+                        <img src="ImageB/harira 2.jpeg" alt="Harira Marocaine">
+                        <div class="menu-card-body d-flex flex-column h-100">
+                            <h3 class="menu-card-title">Harira Fassi</h3>
+                            <p class="text-muted small flex-grow-1">Soupe traditionnelle marocaine, onctueuse et parfumée, servie avec dattes et chebakia.</p>
+                            <div class="menu-price mx-auto">45 MAD</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="menu-card h-100">
+                        <img src="ImageB/rfissa.jpeg" alt="Rfissa">
+                        <div class="menu-card-body d-flex flex-column h-100">
+                            <h3 class="menu-card-title">Rfissa au Poulet Beldi</h3>
+                            <p class="text-muted small flex-grow-1">Trid (fines crêpes) effiloché, lentilles, fenugrec, bouillon au safran pur et poulet fermier.</p>
+                            <div class="menu-price mx-auto">150 MAD</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 4 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="menu-card h-100">
+                        <img src="ImageB/dessert royal.jpeg" alt="Dessert Royal">
+                        <div class="menu-card-body d-flex flex-column h-100">
+                            <h3 class="menu-card-title">Symphonie Sucrée</h3>
+                            <p class="text-muted small flex-grow-1">Assortiment de pâtisseries fines marocaines (cornes de gazelle, ghriba) et thé à la menthe.</p>
+                            <div class="menu-price mx-auto">70 MAD</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 5 - Salade -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="menu-card h-100">
+                        <img src="ImageB/les salades.jpeg" alt="Salades Marocaines">
+                        <div class="menu-card-body d-flex flex-column h-100">
+                            <h3 class="menu-card-title">Mosaïque de Salades</h3>
+                            <p class="text-muted small flex-grow-1">Assortiment de salades marocaines variées : zaalouk, taktouka, salade de poivrons grillés et carottes épicées.</p>
+                            <div class="menu-price mx-auto">55 MAD</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 6 - Tanjiya -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="menu-card h-100">
+                        <img src="ImageB/Tanjiya flfakher.jpeg" alt="Tanjiya Marrakchia">
+                        <div class="menu-card-body d-flex flex-column h-100">
+                            <h3 class="menu-card-title">Tanjiya Marrakchia</h3>
+                            <p class="text-muted small flex-grow-1">Viande de veau cuite lentement dans un pot en terre, au smen, safran, ail confit et citron beldi.</p>
+                            <div class="menu-price mx-auto">160 MAD</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== TAGINES ==================== -->
+    <div class="category-banner" style="background-image: url('ImageB/Tagine zwa9.jpeg');">
+        <div class="category-banner-content">
+            <i class="bi bi-fire category-icon"></i>
+            <h2>Nos Tagines</h2>
+            <p class="category-subtitle">Cuits à petit feu, servis avec amour</p>
+            <div class="category-divider"></div>
+        </div>
+    </div>
+    <section id="tagines" class="category-menu">
+        <div class="container">
+            <div class="row g-4">
+                <!-- Tagine 1 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="menu-card h-100">
+                        <img src="ImageB/tagine bar9o9.jpeg" alt="Tagine aux Pruneaux">
+                        <div class="menu-card-body d-flex flex-column h-100">
+                            <h3 class="menu-card-title">Tagine M'rouzia</h3>
+                            <p class="text-muted small flex-grow-1">Viande de veau fondante, pruneaux caramélisés, amandes grillées, sésame et épices douces.</p>
+                            <div class="menu-price mx-auto">120 MAD</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tagine 2 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="menu-card h-100">
+                        <img src="ImageB/tagine kefta.jpeg" alt="Tagine Kefta">
+                        <div class="menu-card-body d-flex flex-column h-100">
+                            <h3 class="menu-card-title">Tagine de Kefta</h3>
+                            <p class="text-muted small flex-grow-1">Boulettes de viande hachée aux épices, mijotées dans une sauce tomate parfumée avec des œufs poêlés.</p>
+                            <div class="menu-price mx-auto">90 MAD</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tagine 3 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="menu-card h-100">
+                        <img src="ImageB/Tagine legu.jpeg" alt="Tagine aux Légumes">
+                        <div class="menu-card-body d-flex flex-column h-100">
+                            <h3 class="menu-card-title">Tagine aux Légumes</h3>
+                            <p class="text-muted small flex-grow-1">Assortiment de légumes de saison mijotés aux épices et olives dans un bouillon au safran pur.</p>
+                            <div class="menu-price mx-auto">85 MAD</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tagine 4 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="menu-card h-100">
+                        <img src="ImageB/TagineFrit.jpg" alt="Tagine Djaj M'hamer">
+                        <div class="menu-card-body d-flex flex-column h-100">
+                            <h3 class="menu-card-title">Tagine Poulet et frite </h3>
+                            <p class="text-muted small flex-grow-1">Poulet fermier doré, olives vertes, citron confit et oignons caramélisés au miel et safran plus frite.</p>
+                            <div class="menu-price mx-auto">110 MAD</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tagine 5 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="menu-card h-100">
+                        <img src="ImageB/Tagine Poisson .jpg" alt="Tagine Royal">
+                        <div class="menu-card-body d-flex flex-column h-100">
+                            <h3 class="menu-card-title">Tagine Poisson </h3>
+                            <p class="text-muted small flex-grow-1"> Poisson selon arrivage aux épices et legumes.</p>
+                            <div class="menu-price mx-auto">140 MAD</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tagine 6 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="menu-card h-100">
+                        <img src="ImageB/Tagine Zbibe Et sferjel.jpg" alt="Tagine Mchermel">
+                        <div class="menu-card-body d-flex flex-column h-100">
+                            <h3 class="menu-card-title">Tagine Zbibe Et sferjel</h3>
+                            <p class="text-muted small flex-grow-1">Agneau Tendres aux raisins secs et pommes coing confites au miel et épices douces.</p>
+                            <div class="menu-price mx-auto">130 MAD</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== COUSCOUS ==================== -->
+    <div class="category-banner" style="background-image: url('ImageB/Art triya.jpeg');">
+        <div class="category-banner-content">
+            <i class="bi bi-gem category-icon"></i>
+            <h2>Nos Couscous</h2>
+            <p class="category-subtitle">La tradition dans chaque grain</p>
+            <div class="category-divider"></div>
+        </div>
+    </div>
+    <section id="couscous" class="category-menu">
+        <div class="container">
+            <div class="row g-4">
+                <!-- Couscous 1 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="menu-card h-100">
+                        <img src="ImageB/couscous tfaya.jpeg" alt="Couscous Tfaya">
+                        <div class="menu-card-body d-flex flex-column h-100">
+                            <h3 class="menu-card-title">Couscous Poulet & Tfaya</h3>
+                            <p class="text-muted small flex-grow-1">Couscous Poulet, Legumes et Tfaya.</p>
+                            <div class="menu-price mx-auto">130 MAD</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Couscous 2 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="menu-card h-100">
+                        <img src="ImageB/couscous legu.jpeg" alt="Couscous aux Légumes">
+                        <div class="menu-card-body d-flex flex-column h-100">
+                            <h3 class="menu-card-title">Couscous 7 Légumes</h3>
+                            <p class="text-muted small flex-grow-1">Le grand classique marocain — courgettes, navets, carottes, potiron, chou et pois chiches.</p>
+                            <div class="menu-price mx-auto">95 MAD</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Couscous 3 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="menu-card h-100">
+                        <img src="ImageB/Coustfaya.jpg" alt="Seffa Medfouna">
+                        <div class="menu-card-body d-flex flex-column h-100">
+                            <h3 class="menu-card-title">Couscous Tfaya</h3>
+                            <p class="text-muted small flex-grow-1">Couscous Tfaya et poulet.</p>
+                            <div class="menu-price mx-auto">140 MAD</div>
+                        </div>
+                    </div>
+                </div>
+                
+    <!-- ==================== SALADES ==================== -->
+    <div class="category-banner" style="background-image: url('ImageB/les salades.jpeg');">
+        <div class="category-banner-content">
+            <i class="bi bi-flower1 category-icon"></i>
+            <h2>Nos Salades</h2>
+            <p class="category-subtitle">Fraîcheur et saveurs du terroir</p>
+            <div class="category-divider"></div>
+        </div>
+    </div>
+    <section id="salades" class="category-menu">
+        <div class="container">
+            <div class="row g-4">
+                <!-- Salade 1 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="menu-card h-100">
+                        <img src="ImageB/Salade R 1.jpeg" alt="Salade Royale">
+                        <div class="menu-card-body d-flex flex-column h-100">
+                            <h3 class="menu-card-title">Salade Royale</h3>
+                            <p class="text-muted small flex-grow-1">Un assortiment majestueux de légumes frais, fruits de mer et délices marinés, dressé avec élégance.</p>
+                            <div class="menu-price mx-auto">120 MAD</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Salade 2 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="menu-card h-100">
+                        <img src="ImageB/zaalouk.jpeg" alt="Zaalouk d'Aubergines">
+                        <div class="menu-card-body d-flex flex-column h-100">
+                            <h3 class="menu-card-title">Zaalouk d'Aubergines</h3>
+                            <p class="text-muted small flex-grow-1">Caviar d'aubergines grillées et tomates, relevé à l'ail, coriandre et huile d'olive extra vierge.</p>
+                            <div class="menu-price mx-auto">45 MAD</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Salade 3 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="menu-card h-100">
+                        <img src="ImageB/felfla.jpeg" alt="Taktouka">
+                        <div class="menu-card-body d-flex flex-column h-100">
+                            <h3 class="menu-card-title">Taktouka de Poivrons</h3>
+                            <p class="text-muted small flex-grow-1">Salade chaude de poivrons verts et rouges grillés, mijotés dans une sauce tomate parfumée.</p>
+                            <div class="menu-price mx-auto">45 MAD</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Salade 4 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="menu-card h-100">
+                        <img src="ImageB/salade marocaine.jpeg" alt="Salade Marocaine">
+                        <div class="menu-card-body d-flex flex-column h-100">
+                            <h3 class="menu-card-title">Salade Marocaine Fraîche</h3>
+                            <p class="text-muted small flex-grow-1">Tomates concassées, concombres, oignons rouges et persil frais, arrosés d'une vinaigrette citronnée.</p>
+                            <div class="menu-price mx-auto">40 MAD</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Salade 5 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="menu-card h-100">
+                        <img src="ImageB/chlayed.jpeg" alt="Assortiment Chlayed">
+                        <div class="menu-card-body d-flex flex-column h-100">
+                            <h3 class="menu-card-title">Assortiment Chlayed</h3>
+                            <p class="text-muted small flex-grow-1">Farandole de petites salades marocaines typiques : carottes au cumin, courgettes chermoula et fèves.</p>
+                            <div class="menu-price mx-auto">65 MAD</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Salade 6 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="menu-card h-100">
+                        <img src="ImageB/salade 3.jpeg" alt="Salade aux Fruits">
+                        <div class="menu-card-body d-flex flex-column h-100">
+                            <h3 class="menu-card-title">Fraîcheur Sucrée-Salée</h3>
+                            <p class="text-muted small flex-grow-1">Mélange audacieux de jeunes pousses, fruits de saison, noix croquantes et fromage doux.</p>
+                            <div class="menu-price mx-auto">75 MAD</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== GRANDES OCCASIONS ==================== -->
+    <div class="category-banner" style="background-image: url('ImageB/art fleur.jpeg');">
+        <div class="category-banner-content">
+            <i class="bi bi-stars category-icon"></i>
+            <h2>Grandes Occasions</h2>
+            <p class="category-subtitle">Célébrez vos moments d'exception</p>
+            <div class="category-divider"></div>
+        </div>
+    </div>
+    <section id="occasions" class="category-menu">
+        <div class="container">
+            <div class="row g-4">
+                <!-- Occasion 1 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="menu-card h-100">
+                        <img src="ImageB/Pastila fr gr.jpeg" alt="Pastilla Royale aux Fruits de Mer">
+                        <div class="menu-card-body d-flex flex-column h-100">
+                            <h3 class="menu-card-title">Pastilla Royale Océan</h3>
+                            <p class="text-muted small flex-grow-1">Une généreuse pastilla festive garnie des meilleurs fruits de mer, crevettes, calamars et poissons nobles.</p>
+                            <div class="menu-price mx-auto">450 MAD</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Occasion 2 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="menu-card h-100">
+                        <img src="ImageB/djaj mhamer 2.jpeg" alt="Poulet de Fête">
+                        <div class="menu-card-body d-flex flex-column h-100">
+                            <h3 class="menu-card-title">Plateau Djaj M'hamer</h3>
+                            <p class="text-muted small flex-grow-1">Assortiment de poulets fermiers rôtis à la perfection, olives, amandes et sauce onctueuse au foie.</p>
+                            <div class="menu-price mx-auto">350 MAD</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Occasion 3 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="menu-card h-100">
+                        <img src="ImageB/chwa.jpeg" alt="Méchoui Royal">
+                        <div class="menu-card-body d-flex flex-column h-100">
+                            <h3 class="menu-card-title">Méchoui Royal</h3>
+                            <p class="text-muted small flex-grow-1">Épaule d'agneau fondante rôtie lentement au four traditionnel, servie avec sel, cumin et légumes vapeur.</p>
+                            <div class="menu-price mx-auto">600 MAD</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Occasion 4 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="menu-card h-100">
+                        <img src="ImageB/Salade R 1.jpeg" alt="Tanjiya Familiale">
+                        <div class="menu-card-body d-flex flex-column h-100">
+                            <h3 class="menu-card-title">Tanjiya Familiale</h3>
+                            <p class="text-muted small flex-grow-1">La véritable Tanjiya Marrakchia grand format, cuite sous les cendres, pour une tablée de gourmands.</p>
+                            <div class="menu-price mx-auto">400 MAD</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Occasion 5 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="menu-card h-100">
+                        <img src="ImageB/Pastila po gr.jpeg" alt="Pastilla Poulet Amandes">
+                        <div class="menu-card-body d-flex flex-column h-100">
+                            <h3 class="menu-card-title">Pastilla Fête Poulet</h3>
+                            <p class="text-muted small flex-grow-1">L'incontournable pastilla sucrée-salée au poulet, amandes concassées, cannelle et fleur d'oranger.</p>
+                            <div class="menu-price mx-auto">380 MAD</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Occasion 6 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="menu-card h-100">
+                        <img src="ImageB/dessert royal.jpeg" alt="Thé et Gâteaux">
+                        <div class="menu-card-body d-flex flex-column h-100">
+                            <h3 class="menu-card-title">Plateau Sucré de Fête</h3>
+                            <p class="text-muted small flex-grow-1">Un festival de pâtisseries marocaines raffinées accompagnées d'un majestueux service de thé à la menthe.</p>
+                            <div class="menu-price mx-auto">250 MAD</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Reservation Section -->
+    <section id="reservation" class="reservation-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-9">
+                    <div class="reservation-form">
+                        <div class="section-title mb-5">
+                            <h2>Réserver une Table</h2>
+                            <p class="text-white mt-3">Assurez-vous une place dans notre palais pour une soirée inoubliable.</p>
+                        </div>
+                        <form>
+                            <div class="row g-4">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" placeholder="Votre Nom Complet" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="email" class="form-control" placeholder="Adresse Email" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="tel" class="form-control" placeholder="Numéro de Téléphone" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <select class="form-select" required>
+                                        <option selected disabled value="">Nombre de couverts</option>
+                                        <option value="1">1 Personne</option>
+                                        <option value="2">2 Personnes</option>
+                                        <option value="3">3 Personnes</option>
+                                        <option value="4">4 Personnes</option>
+                                        <option value="5">5+ Personnes</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="date" class="form-control" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="time" class="form-control" required>
+                                </div>
+                                <div class="col-12 mt-5 text-center">
+                                    <button type="submit" class="btn btn-gold rounded-pill px-5 py-3 w-75 fs-5">Confirmer la Réservation</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="row gy-5">
+                <div class="col-lg-4 text-center text-lg-start pe-lg-4">
+                    <img src="ImageB/logo1.jpeg" alt="Beldi Royal Logo" class="footer-logo border border-warning rounded-circle">
+                    <p class="text-muted mt-3" style="line-height: 1.8;">Découvrez l'art de vivre et la gastronomie marocaine dans une ambiance royale, authentique et chaleureuse. Un voyage des sens vous attend.</p>
+                    <div class="social-links mt-4">
+                        <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#" aria-label="TripAdvisor"><i class="bi bi-chat-square-quote-fill"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 text-center text-lg-start ps-lg-5">
+                    <h4 class="footer-title">Contact</h4>
+                    <ul class="list-unstyled text-muted" style="line-height: 2.2;">
+                        <li><i class="bi bi-geo-alt-fill text-warning me-2"></i> 123 Avenue Mohammed VI, Marrakech</li>
+                        <li><i class="bi bi-telephone-fill text-warning me-2"></i> +212 5 24 12 34 56</li>
+                        <li><i class="bi bi-envelope-fill text-warning me-2"></i> contact@beldiroyal.ma</li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 text-center text-lg-start">
+                    <h4 class="footer-title">Heures d'Ouverture</h4>
+                    <ul class="list-unstyled text-muted" style="line-height: 2.2;">
+                        <li><strong>Lun - Jeu :</strong> 12h00 - 23h00</li>
+                        <li><strong>Ven - Sam :</strong> 12h00 - 00h00</li>
+                        <li><strong>Dimanche :</strong> 11h00 - 22h00 <span class="badge bg-warning text-dark ms-2">Brunch</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center text-muted mt-5 pt-4 border-top border-secondary">
+                <p class="mb-0">&copy; 2024 Beldi Royal Marocain. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.backgroundColor = 'rgba(18, 18, 18, 0.98)';
+                navbar.style.boxShadow = '0 4px 15px rgba(0,0,0,0.6)';
+            } else {
+                navbar.style.backgroundColor = 'rgba(18, 18, 18, 0.95)';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
